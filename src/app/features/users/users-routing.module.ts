@@ -7,11 +7,11 @@ const routes: Routes = [
     path: '',
     component: UsersComponent,
     children: [
-      { path: '', redirectTo: 'user-order-details', pathMatch: 'full' },
+      { path: '', component: UserOrderDetailsComponent },
       { path: 'user-order-details', component: UserOrderDetailsComponent },
     ]
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '/user-order-details' }
 ];
 
 @NgModule({
