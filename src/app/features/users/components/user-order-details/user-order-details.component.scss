@@ -1,0 +1,34 @@
+.order-details {
+  margin: 3rem 0;
+
+  .order-details-form &-card {
+    box-shadow: 0 5px 10px rgba(36, 50, 56, 0.25);
+
+    &_action {
+      margin: 0;
+    }
+  }
+
+  &_title {
+    color: #101822;
+  }
+
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+
+    @media only screen and (min-width: 768px) {
+      flex-wrap: nowrap;
+    }
+
+    &_name,
+    &_description,
+    &_price {
+      width: 100%;
+      margin-right: 2rem;
+    }
+  }
+}
