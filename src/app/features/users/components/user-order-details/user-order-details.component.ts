@@ -28,7 +28,7 @@ export class UserOrderDetailsComponent implements OnInit {
     return this.formBuilder.group({
       name: ['', Validators.required],
       description: [''],
-      price: [null, Validators.required],
+      quantity: [null, Validators.required],
     });
   }
 

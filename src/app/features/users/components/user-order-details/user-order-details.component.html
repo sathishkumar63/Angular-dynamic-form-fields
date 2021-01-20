@@ -32,18 +32,18 @@
                 <input matInput type="text" formControlName="description" />
               </mat-form-field>
 
-              <mat-form-field class="order-item_price">
-                <mat-label>Item price</mat-label>
-                <input matInput type="number" formControlName="price" />
+              <mat-form-field class="order-item_quantity">
+                <mat-label>Item quantity</mat-label>
+                <input matInput type="number" formControlName="quantity" />
                 <mat-error
                   *ngIf="
-                    orderItemFormGroups.controls[i].get('price')?.touched &&
+                    orderItemFormGroups.controls[i].get('quantity')?.touched &&
                     orderItemFormGroups.controls[i]
-                      .get('price')
+                      .get('quantity')
                       ?.hasError('required')
                   "
                 >
-                  Item price is <strong>required</strong>
+                  Item quantity is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
 
