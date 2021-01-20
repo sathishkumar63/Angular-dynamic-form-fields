@@ -1,0 +1,77 @@
+<div class="order-details">
+  <form [formGroup]="orderForm" class="order-details-form">
+    <mat-card class="order-details-card">
+      <mat-card-header>
+        <mat-card-title class="order-details_title"
+          >Order Details Form</mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <ng-container formArrayName="orderItems">
+          <ng-container
+            *ngFor="let item of orderItemFormGroups.controls; let i = index"
+          >
+            <div [formGroupName]="i" class="order-item">
+              <mat-form-field class="order-item_name">
+                <mat-label>Item name</mat-label>
+                <input matInput type="text" formControlName="name" />
+                <mat-error
+                  *ngIf="
+                    orderItemFormGroups.controls[i].get('name')?.touched &&
+                    orderItemFormGroups.controls[i]
+                      .get('name')
+                      ?.hasError('required')
+                  "
+                >
+                  Item name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="order-item_description">
+                <mat-label>Item description</mat-label>
+                <input matInput type="text" formControlName="description" />
+              </mat-form-field>
+
+              <mat-form-field class="order-item_price">
+                <mat-label>Item price</mat-label>
+                <input matInput type="number" formControlName="price" />
+                <mat-error
+                  *ngIf="
+                    orderItemFormGroups.controls[i].get('price')?.touched &&
+                    orderItemFormGroups.controls[i]
+                      .get('price')
+                      ?.hasError('required')
+                  "
+                >
+                  Item price is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <button
+                mat-icon-button
+                *ngIf="orderItemFormGroups.length > 1"
+                (click)="removeOrderItem(i)"
+                color="warn"
+                aria-label="delete order item"
+                matTooltip="Delete order item"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+            <mat-divider></mat-divider>
+          </ng-container>
+        </ng-container>
+      </mat-card-content>
+      <mat-card-actions class="order-details-card_action">
+        <button
+          mat-flat-button
+          color="primary"
+          [disabled]="orderItemFormGroups.invalid"
+          (click)="addOrderItem()"
+        >
+          <mat-icon>add</mat-icon> Add Item
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
